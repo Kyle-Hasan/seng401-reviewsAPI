@@ -136,7 +136,7 @@ def editReview():
                 break
                 
         if flag==0:
-            return jsonify(), 500
+            return jsonify({"status": "No such review found"}), 500
     
     
     cur0.close()
@@ -181,7 +181,7 @@ def deleteReview():
                 break
                 
         if flag==0:
-            return jsonify(), 500
+            return jsonify({"status": "No such review found"}), 500
     
     
     cur0.close()

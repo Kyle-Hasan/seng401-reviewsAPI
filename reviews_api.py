@@ -117,29 +117,29 @@ def editReview():
 
     # edit in database
     
-#     cur0 = mysql.connection.cursor()
-#     result = cur0.execute("""Select reviewID from REVIEWS""")
+    cur0 = mysql.connection.cursor()
+    result = cur0.execute("""Select reviewID from REVIEWS""")
     
 
-#     if(result<=0):
-#         return jsonify({"status": "failed"}), 500
+    if(result<=0):
+        return jsonify({"status": "failed"}), 500
 
-#     else:
+    else:
 
-#         flag=0
-#         rows = cur0.fetchall()
+        flag=0
+        rows = cur0.fetchall()
       
-#         for row in rows:
+        for row in rows:
 
-#             if row[0] == 'ID':
-#                 flag=1
-#                 break
+            if row[0] == reviewID:
+                flag=1
+                break
                 
-#         if flag==0:
-#             return jsonify(), 500
+        if flag==0:
+            return jsonify(), 500
     
     
-#     cur0.close()
+    cur0.close()
     
     
     cur = mysql.connection.cursor()
@@ -161,6 +161,30 @@ def deleteReview():
     reviewID = request.json['ID']
 
     # delete in database
+    
+    cur0 = mysql.connection.cursor()
+    result = cur0.execute("""Select reviewID from REVIEWS""")
+    
+
+    if(result<=0):
+        return jsonify({"status": "failed"}), 500
+
+    else:
+
+        flag=0
+        rows = cur0.fetchall()
+      
+        for row in rows:
+
+            if row[0] == reviewID:
+                flag=1
+                break
+                
+        if flag==0:
+            return jsonify(), 500
+    
+    
+    cur0.close()
     
     
     cur = mysql.connection.cursor()
